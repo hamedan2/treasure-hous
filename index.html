@@ -43,16 +43,6 @@ function check(){
     show('fail');
   }
   }
-  reportAnswer(x, true, 'مرحله اول');
-  return show('map');
-  }s=2;stage.textContent='مرحله دوم — آخرین فرصت';q.textContent='همدان تقریباً چند سال قدمت دارد؟';a.value='';m.textContent='پاسخ درست نبود... یک فرصت دیگر داری.';
-                 reportAnswer(x, false, 'مرحله اول');return}if(['3000','۳۰۰۰','سه هزار','سه هزار سال'].includes(x)){
-  reportAnswer(x, true, 'مرحله دوم');
-  show('map');
-}else{
-  reportAnswer(x, false, 'مرحله دوم');
-  show('fail');
-  }')}
 function reportAnswer(answer, result, stageName) {
   fetch("https://telegram-site-bot.zndylyrda10.workers.dev/", {
     method: "POST",
