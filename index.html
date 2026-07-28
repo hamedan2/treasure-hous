@@ -9,7 +9,40 @@
 </section></main><script>
 let s=1;function show(x){['intro','quiz','map','fail'].forEach(i=>document.getElementById(i).className='screen');document.getElementById(x).className='screen active';if(x==='quiz')document.getElementById('a').focus()}
 function clean(x){return x.trim().toLowerCase().replace(/ي/g,'ی').replace(/ك/g,'ک')}
-function check(){let x=clean(a.value);if(!x){m.textContent='اول پاسخ را بنویس.';return}if(['هگمتانه','هگمتانا'].includes(x)){
+function check(){
+  let x = clean(a.value);
+
+  if(!x){
+    m.textContent = 'اول پاسخ را بنویس.';
+    return;
+  }
+
+  if(s === 1){
+
+    if(['هگمتانه','هگمتانا'].includes(x)){
+      reportAnswer(x, true, 'مرحله اول');
+      show('map');
+      return;
+    }
+
+    reportAnswer(x, false, 'مرحله اول');
+
+    s = 2;
+    stage.textContent = 'مرحله دوم — آخرین فرصت';
+    q.textContent = 'همدان تقریباً چند سال قدمت دارد؟';
+    a.value = '';
+    m.textContent = 'پاسخ درست نبود... یک فرصت دیگر داری.';
+    return;
+  }
+
+  if(['3000','۳۰۰۰','سه هزار','سه هزار سال'].includes(x)){
+    reportAnswer(x, true, 'مرحله دوم');
+    show('map');
+  }else{
+    reportAnswer(x, false, 'مرحله دوم');
+    show('fail');
+  }
+  }
   reportAnswer(x, true, 'مرحله اول');
   return show('map');
   }s=2;stage.textContent='مرحله دوم — آخرین فرصت';q.textContent='همدان تقریباً چند سال قدمت دارد؟';a.value='';m.textContent='پاسخ درست نبود... یک فرصت دیگر داری.';
