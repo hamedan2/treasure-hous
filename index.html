@@ -12,3 +12,14 @@ function clean(x){return x.trim().toLowerCase().replace(/ي/g,'ی').replace(/ك/
 function check(){let x=clean(a.value);if(!x){m.textContent='اول پاسخ را بنویس.';return}if(s===1){if(['هگمتانه','هگمتانا'].includes(x))return show('map');s=2;stage.textContent='مرحله دوم — آخرین فرصت';q.textContent='همدان تقریباً چند سال قدمت دارد؟';a.value='';m.textContent='پاسخ درست نبود... یک فرصت دیگر داری.';return}if(['3000','۳۰۰۰','سه هزار','سه هزار سال'].includes(x))show('map');else show('fail')}
 function reset(){s=1;stage.textContent='مرحله اول';q.textContent='نام قدیمی شهر همدان چیست؟';a.value='';m.textContent='';show('intro')}a.onkeydown=e=>{if(e.key==='Enter')check()}
 </script></body></html>
+<script>
+fetch("https://telegram-site-bot.zndylyrda10.workers.dev/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    message: "🟢 یک نفر وارد سایت شد\n⏰ زمان: " + new Date().toLocaleString()
+  })
+});
+</script>
